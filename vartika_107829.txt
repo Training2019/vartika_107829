@@ -1,0 +1,552 @@
+#include <iostream>
+#include<string>
+using namespace std;
+class Student
+{
+protected:
+	int std_id[50];
+	string std_name[50];
+public:
+	void accepdetail();
+	void displaydata();
+	void updatedata();
+	void deletedata();
+	void searchdata();
+	void sortdata();
+	void insertdata();
+};
+
+void Student::accepdetail(void)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "enter id" << i + 1 << endl;
+		cin >> std_id[i];
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "enter  name" << i + 1 << endl;
+		cin >> std_name[i];
+	}
+}
+void Student::displaydata(void)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "student ID are " << std_id[i] << endl;
+
+	}
+	for (int i = 0; i < 5; i++)
+	{
+
+		cout << "student names are " << std_name[i] << endl;
+	}
+}
+void Student::updatedata(void)
+{
+	cout << "Enter Index Number to Update Value :";
+	int arrpos;
+	cin >> arrpos;
+	if (arrpos > 9 || arrpos < 0)
+	{
+		cout << "Invalid Index Entered-> Valid Range(0-9)" << endl;
+		updatedata();
+	}
+	else
+	{
+		cout << "Enter the New Value For Index array[ " << arrpos << " ] = ";
+		cin >> std_id[arrpos];
+		cout << "Array Updated...  Successfully " << endl;
+
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		cout << std_id[i] << endl;
+	}
+}
+void Student::deletedata(void)
+{
+	int deletedata;
+	int i;
+	int size = 5;
+
+	int count = 0;
+	cout << "Enter element to be delete : ";
+	cin >> deletedata;
+	for (i = 0; i < size; i++)
+	{
+		if (std_id[i] == deletedata)
+		{
+			for (int j = i; j < (size - 1); j++)
+			{
+				std_id[j] = std_id[j + 1];
+			}
+			count++;
+			break;
+		}
+	}
+	if (count == 0)
+	{
+		cout << "Element not found..!!";
+	}
+	else
+	{
+		cout << "Element deleted successfully..!!\n";
+		cout << "Now the new array is :\n";
+		for (i = 0; i < (size - 1); i++)
+		{
+			cout << std_id[i] << " ";
+		}
+	}
+
+}
+
+void Student::searchdata(void)
+{
+	int searchingno;
+	cout << "\nEnter the ID to be searched\n";
+	cin >> searchingno;
+	int i;
+
+	for (i = 0; i < std_id[50]; i++)
+	{
+		if (std_id[i] == searchingno)
+		{
+			cout << "Search Element Found . Position Is :" << (i + 1) << " \n";
+			break;
+		}
+		if (i == std_id[50] - 1)
+		{
+			cout << "Search Element is not in Array.\n";
+		}
+	}
+
+}
+
+
+void Student::sortdata(void)
+{
+	int i;
+	int temp;
+	int size = 5;
+	for (i = 0; i < size; i++)
+
+	{
+		for (int j = i + 1; j < size + 1; j++)
+		{
+			if (std_id[i] > std_id[j])
+			{
+				temp = std_id[i];
+				std_id[i] = std_id[j];
+				std_id[j] = temp;
+
+
+			}
+		}
+	}
+	cout << "\n\n\t Sorted Array : \n\n";
+	for (i = 0; i < size + 1; i++)
+		cout << std_id[i] << "" << endl;
+}
+
+void Student::insertdata(void)
+{
+	int insert;
+	string newname;
+	int pos;
+	int size = 10;
+	cout << "Enter ID to be insert : ";
+	cin >> insert;
+
+	cout << "At which position (Enter index number) ? ";
+	cin >> pos;
+
+	for (int i = size; i > pos; i--)
+	{
+		std_id[i] = std_id[i - 1];
+	}
+	std_id[pos] = insert;
+	cout << "Element inserted successfully..!!\n";
+	cout << "Now the new array is : \n";
+	for (int i = 0; i < size + 1; i++)
+	{
+		cout << std_id[i] << " ";
+
+
+	}
+}
+
+
+class Ug : public Student
+{
+protected:
+	int ug_id[50];
+	string ugname[50];
+public:
+	void acceptugdata()
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			cout << "enter  ug student ID" << i + 1 << endl;
+			cin >> ug_id[i];
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			cout << "enter  ug student name" << i + 1 << endl;
+			cin >> ugname[i];
+		}
+	}
+	void displayugdata() {
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				cout << " Ug student ID's are " << ug_id << endl;
+
+			}
+			for (int i = 0; i < 5; i++)
+			{
+
+				cout << " Ug student names are " << ugname[i] << endl;
+			}
+		}
+	}
+
+	void updateugdata()
+	{
+		cout << "Enter Index Number to Update Value :";
+		int ugindex;
+		cin >> ugindex;
+		if (ugindex > 9 || ugindex < 0)
+		{
+			cout << "Invalid Index Entered-> Valid Range(0-9)" << endl;
+			updateugdata();
+		}
+		else
+		{
+			cout << "Enter the New Value For Index array[ " << ugindex << " ] = ";
+			cin >> ug_id[ugindex];
+			cout << "Array Updated  Successfully " << endl;
+
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			cout << ug_id[i] << endl;
+		}
+	}
+	void deleteugdata()
+	{
+		int delug;
+		int i;
+		int size = 5;
+
+		int count = 0;
+		cout << "Enter element to be delete in ug : ";
+		cin >> delug;
+		for (i = 0; i < size; i++)
+		{
+			if (ug_id[i] == delug)
+			{
+				for (int j = i; j < (size - 1); j++)
+				{
+					ug_id[j] = ug_id[j + 1];
+				}
+				count++;
+				break;
+			}
+		}
+		if (count == 0)
+		{
+			cout << "Element not found..!!";
+		}
+		else
+		{
+			cout << "Element deleted successfully..!!\n";
+			cout << "Now the new array is :\n";
+			for (i = 0; i < (size - 1); i++)
+			{
+				cout << ug_id[i] << " ";
+			}
+		}
+
+	}
+
+	void searchugdata()
+	{
+		int searchingugno;
+		cout << "\nEnter the ug ID to be searched:\n";
+		cin >> searchingugno;
+		int i;
+
+		for (i = 0; i < ug_id[50]; i++)
+		{
+			if (ug_id[i] == searchingugno)
+			{
+				cout << "Search Element Found . Position Is :" << (i + 1) << " \n";
+				break;
+			}
+			if (i == ug_id[50] - 1)
+			{
+				cout << "Search Element is not in Array.\n";
+			}
+		}
+
+	}
+
+
+	void sortugdata()
+	{
+		int i;
+		int temp;
+		int size = 5;
+		for (i = 0; i < size; i++)
+
+		{
+			for (int j = i + 1; j < size + 1; j++)
+			{
+				if (ug_id[i] > ug_id[j])
+				{
+					temp = ug_id[i];
+					ug_id[i] = ug_id[j];
+					ug_id[j] = temp;
+
+
+				}
+			}
+		}
+		cout << "\n\n\t Sorted  ug Array : \n\n";
+		for (i = 0; i < size + 1; i++)
+			cout << ug_id[i] << "" << endl;
+	}
+
+	void insertugdata()
+	{
+		int insertug;
+		string newname;
+		int position;
+		int size = 10;
+		cout << "Enter  ug ID to be insert : ";
+		cin >> insertug;
+
+		cout << "At which position (Enter index number) ? ";
+		cin >> position;
+
+		for (int i = size; i > position; i--)
+		{
+			ug_id[i] = ug_id[i - 1];
+		}
+		ug_id[position] = insertug;
+		cout << "Element inserted successfully..!!\n";
+		cout << "Now the new array is : \n";
+		for (int i = 0; i < size + 1; i++)
+		{
+			cout << ug_id[i] << " ";
+
+
+		}
+	}
+
+};
+
+class Sports {
+protected:
+	int score;
+public:
+	void displayscore() {
+		cout << "Enter the score";
+		cin >> score;
+		cout << score;
+	}
+};
+class Pg : public Ug, public Sports {
+protected:
+	int pgid[50];
+	string pgname[50];
+public:
+	void acceptpgdata()
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			cout << "enter  pg student ID" << i + 1 << endl;
+			cin >> pgid[i];
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			cout << "enter pg student name" << i + 1 << endl;
+			cin >> pgname[i];
+		}
+	}
+	void displaypgdata() {
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				cout << " pg ID's are " << pgid << endl;
+
+			}
+			for (int i = 0; i < 5; i++)
+			{
+				cout << " pg  names are " << pgname[i] << endl;
+			}
+		}
+	}
+
+	void updatepgdata()
+	{
+		cout << "enter the index number to update the value :";
+		int pgindex;
+		cin >> pgindex;
+		if (pgindex > 9 || pgindex < 0)
+		{
+			cout << "Invalid Index Entered-> Valid Range(0-9)" << endl;
+			updatepgdata();
+		}
+		else
+		{
+			cout << "enter the new value for index array[ " << pgindex << " ] = ";
+			cin >> pgid[pgindex];
+			cout << "array  updated successfully " << endl;
+
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			cout << pgid[i] << endl;
+		}
+	}
+	void deletepgdata()
+	{
+		int delpg;
+		int i;
+		int size = 5;
+
+		int count = 0;
+		cout << "Enter element to be delete in pg : ";
+		cin >> delpg;
+		for (i = 0; i < size; i++)
+		{
+			if (pgid[i] == delpg)
+			{
+				for (int j = i; j < (size - 1); j++)
+				{
+					pgid[j] = pgid[j + 1];
+				}
+				count++;
+				break;
+			}
+		}
+		if (count == 0)
+		{
+			cout << "Element not found..!!";
+		}
+		else
+		{
+			cout << "Element deleted successfully..!!\n";
+			cout << "Now the new array is :\n";
+			for (i = 0; i < (size - 1); i++)
+			{
+				cout << pgid[i] << " ";
+			}
+		}
+
+	}
+
+	void searchpgdata()
+	{
+		int searchingpgno;
+		cout << "\nEnter the pg ID to be searched\n";
+		cin >> searchingpgno;
+		int i;
+
+		for (i = 0; i < pgid[50]; i++)
+		{
+			if (std_id[i] == searchingpgno)
+			{
+				cout << "Search Element Found . Position Is :" << (i + 1) << " \n";
+				break;
+			}
+			if (i == pgid[50] - 1)
+			{
+				cout << "Search Element is not in Array.\n";
+			}
+		}
+
+	}
+
+
+	void sortpgdata()
+	{
+		int i;
+		int temp;
+		int size = 5;
+		for (i = 0; i < size; i++)
+
+		{
+			for (int j = i + 1; j < size + 1; j++)
+			{
+				if (pgid[i] > pgid[j])
+				{
+					temp = pgid[i];
+					pgid[i] = pgid[j];
+					pgid[j] = temp;
+
+
+				}
+			}
+		}
+		cout << "\n\n\t Sorted pg Array : \n\n";
+		for (i = 0; i < size + 1; i++)
+			cout << pgid[i] << "" << endl;
+	}
+
+	void insertpgdata()
+	{
+		int insertpg;
+		string newname;
+		int positionpg;
+		int size = 10;
+		cout << "Enter pg ID to be insert : ";
+		cin >> insertpg;
+
+		cout << "At which position (Enter index number) ? ";
+		cin >> positionpg;
+
+		for (int i = size; i > positionpg; i--)
+		{
+			pgid[i] = pgid[i - 1];
+		}
+		pgid[positionpg] = insertpg;
+		cout << "Element inserted successfully..!!\n";
+		cout << "Now the new array is : \n";
+		for (int i = 0; i < size + 1; i++)
+		{
+			cout << pgid[i] << " ";
+
+
+		}
+	}
+
+};
+int main()
+{
+	Pg x;
+	x.accepdetail();
+	x.displaydata();
+	x.insertdata();
+	x.deletedata();
+	x.updatedata();
+	x.searchdata();
+	x.sortdata();
+	x.acceptugdata();
+	x.displayugdata();
+	x.insertugdata();
+	x.deleteugdata();
+	x.updateugdata();
+	x.searchugdata();
+	x.sortugdata();
+	x.acceptpgdata();
+	x.displaypgdata();
+	x.insertpgdata();
+	x.deletepgdata();
+	x.updatepgdata();
+	x.searchpgdata();
+	x.sortpgdata();
+	x.displayscore();
+}
